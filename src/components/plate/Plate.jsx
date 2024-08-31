@@ -4,33 +4,37 @@ import Button from "../button/Button";
 import cn from "classnames";
 import styles from "./plate.module.scss";
 
-function Plate({ plateData }) {
-  const [value, setValue] = useState(0);
+function Plate({ plateData, total }) {
+  const [value, setValue] = useState(plateData.initialAmount);
+
+  // const [disabled, setDisable] = useState(false);
+  const [desc, setDesc] = useState(false);
 
   //надо value всех карточек сложить и отправить в тотал
+  const countTotal = () => {};
 
   const limitDescription = () => {
-    if (plateData.description.length > 51) {
+    if (plateData.description.length > 51 && desc === false) {
       return `${plateData.description.slice(0, 51)}...`;
     }
     return plateData.description;
   };
 
+  const setStateDesc = () => {
+    setDesc((desc) => !desc);
+  };
+
   const showHandler = () => {
-    if (plateData.description.length < 51) {
-      //кнопка disable
-      console.log("disabled");
-    }
-    if (plateData.description.length > 51) {
-      return plateData.description;
-    }
-    //нажали - надпись поменялась на хайд, а текст открылся - нажали - надпись поменялась на шоу, а текст скрылся
+    setStateDesc();
   };
 
   const valueHandler = () => {
+    // let valueArray = [];
+    // console.log(valueArray);
+
     setValue(value + 1);
+    // total+ 1;
   };
-  //
 
   return (
     <div className={cn(styles.plate)}>
@@ -40,8 +44,8 @@ function Plate({ plateData }) {
         <span className={cn(styles.plate__description)}>{limitDescription()}</span>
       </div>
       <div className={cn(styles.plate__control)}>
-        <Button use="add" text="add"></Button>
-        <Button use="showToggle" text="show"></Button>
+        <Button use="add" text="add" handler={valueHandler}></Button>
+        <Button use="showToggle" text={desc === true ? "hide" : "show"} handler={showHandler}></Button>
       </div>
     </div>
   );
