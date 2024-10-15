@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Plates---React/static/css/main.b9cd8b5f.css",
+    "main.js": "/Plates---React/static/js/main.18143d23.js",
+    "index.html": "/Plates---React/index.html",
+    "main.b9cd8b5f.css.map": "/Plates---React/static/css/main.b9cd8b5f.css.map",
+    "main.18143d23.js.map": "/Plates---React/static/js/main.18143d23.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9cd8b5f.css",
+    "static/js/main.18143d23.js"
+  ]
+}
